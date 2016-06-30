@@ -1,0 +1,12 @@
+version: '2'
+services:
+  backend:
+    image: krazyideas/backend
+    ports: 
+      - "8080:8080"
+  frontend:
+    image: krazyideas/frontend
+    ports: 
+      - "3000:3000"
+    links:
+      - backend
