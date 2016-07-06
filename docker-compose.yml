@@ -1,12 +1,23 @@
 version: '2'
 services:
+  postgres:
+    image: postgres:9.4
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=ideas
+      - POSTGRES_USER=krazy
   backend:
-    image: krazyideas/backend:v0.0.2
-    ports: 
+    image: krazyideas/backend:v0.0.3
+    ports:
       - "8080:8080"
+    links:
+      - postgres
   frontend:
-    image: krazyideas/frontend:v0.0.2
-    ports: 
+    image: krazyideas/frontend:v0.0.3
+    ports:
       - "3000:3000"
     links:
       - backend
+    volumes:
+        - ~/frontendConfig:/usr/src/myapp/conf:ro
