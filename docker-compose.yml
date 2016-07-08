@@ -8,13 +8,15 @@ services:
       - POSTGRES_PASSWORD=ideas
       - POSTGRES_USER=krazy
   backend:
-    image: krazyideas/backend:v0.0.3
+    image: krazyideas/backend:v0.0.4
     ports:
       - "8080:8080"
     links:
       - postgres
+    volumes:
+        - ~/backendConfig:/usr/src/myapp/config:ro
   frontend:
-    image: krazyideas/frontend:v0.0.3
+    image: krazyideas/frontend:v0.0.4
     ports:
       - "3000:3000"
     links:
