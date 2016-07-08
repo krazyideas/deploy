@@ -17,3 +17,8 @@ Subsequently, an admin user can modify these initial ideas to any form using UI.
 ### Create an admin user
 Below is an example curl script for converting a normal user to an admin user... assuming first registered user will be the admin.
 curl -i -X PUT -H "Content-Type:application/json" -d '{"name": "adminuser", "authId": "1234@github", "adminFlag": true}' http://localhost:8080/people/1
+
+## Configuration Samples
+Deployment requires two folders to be shared from host machine to backend and frontend images for ease of externalized configuration. Respective samples are provided as sub-folders. 
+
+These folders must be placed on the user home folder of the user running docker compose.
