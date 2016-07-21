@@ -1,18 +1,20 @@
 version: '2'
 services:
-  postgres:
-    image: postgres:9.4
+  mysql:
+    image: mysql:5.7
     ports:
-      - "5432:5432"
+      - "3306:3306"
     environment:
-      - POSTGRES_PASSWORD=ideas
-      - POSTGRES_USER=krazy
+      - MYSQL_DATABASE=krazy
+      - MYSQL_PASSWORD=ideas
+      - MYSQL_USER=krazy
+      - MYSQL_ROOT_PASSWORD=krazyideas
   backend:
-    image: krazyideas/backend:v0.0.4
+    image: krazyideas/backend:v0.0.6
     ports:
       - "8080:8080"
     links:
-      - postgres
+      - mysql
     volumes:
         - ~/backendConfig:/usr/src/myapp/config:ro
   frontend:
